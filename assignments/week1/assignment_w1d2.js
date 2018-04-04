@@ -28,7 +28,7 @@ function slow(callback) {
 		if(Math.random() > 0.5) {
 			return callback("Error", null);
 		}
-		callback(null, { id: 12345 });
+		return callback(null, { id: 12345 });
 	});
 }
 
