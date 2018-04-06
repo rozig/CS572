@@ -1,0 +1,16 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "CS572 Assignment Week 1 Day 4",
+  "main": "problem1.js",
+  "dependencies": {
+    "rxjs": "^5.5.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ganzorig Erdenebat",
+  "license": "ISC"
+}
