@@ -15,7 +15,7 @@ const os = require('os');
 // }
 // checkSystem();
 
-const checkSystemObservable = Rx.Observable.create(observer => {
+let checkSystemObservable = Rx.Observable.create(observer => {
     observer.next('Checking your system...');
     if(os.totalmem() / 1000000000 < 2) {
         observer.next('This app needs at least 2GB of RAM');
@@ -28,5 +28,5 @@ const checkSystemObservable = Rx.Observable.create(observer => {
     observer.next('System is checked successfully.');
 });
 
-checkSystemObservable.subscribe(value => console.log(value));
-// checkSystemObservable.unsubscribe();
+let subscription = checkSystemObservable.subscribe(value => console.log(value));
+subscription.unsubscribe();
