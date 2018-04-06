@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>User List</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>City</th>
+				<th>Zip Code</th>
+				<th>Latitude</th>
+				<th>Longitude</th>
+				<th>Website</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#users}}
+			<tr>
+				<td>{{ id }}</td>
+				<td>{{ name }}</td>
+				<td>{{ username }}</td>
+				<td>{{ email }}</td>
+				<td>{{ address.city }}</td>
+				<td>{{ address.zipcode }}</td>
+				<td>{{ address.geo.lat }}</td>
+				<td>{{ address.geo.lng }}</td>
+				<td>{{ website }}</td>
+			</tr>
+			{{/users}}
+		</tbody>
+	</table>
+</body>
+</html>

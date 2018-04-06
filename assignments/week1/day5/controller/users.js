@@ -4,28 +4,33 @@ const Rx = require('rxjs/Rx');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	const getUsersPromise = fetch('http://jsonplaceholder.typicode.com/users/');
-	// Using Promise
-	getUsersPromise
+	res.render('index');
+});
+
+router.get('/promise', (req, res) => {
+	fetch('http://jsonplaceholder.typicode.com/users/')
 		.then(res => res.json())
 		.then(data => {
-			res.render('index', { users: data });
+			res.render('users', { users: data });
 		})
 		.catch(err => console.log(err));
-	
-	// Using async/await
-	// (async () => {
-	// 	const response = await getUsersPromise;
-	// 	const users = await response.json();
-	// 	res.render('index', { users: users });
-	// })();
-	
-	// Using Observables
-	// const source = Rx.Observable.fromPromise(getUsersPromise);
-	// source.subscribe(async (data) => {
-	// 	const users = await data.json();
-	// 	res.render('index', { users: users });
-	// }, err => console.log(err));
+});
+
+router.get('/observable', (req, res) => {
+	const source = Rx.Observable.fromPromise(fetch('http://jsonplaceholder.typicode.com/users/'));
+	source
+		.flatMap(response => Rx.Observable.from(response.json()))
+		.subscribe(data => {
+			res.render('users', { users: data });
+		}, err => console.log(err));
+});
+
+router.get('/await', (req, res) => {
+	(async () => {
+		const response = await fetch('http://jsonplaceholder.typicode.com/users/');
+		const users = await response.json();
+		res.render('users', { users: users });
+	})();
 });
 
 module.exports = router;
