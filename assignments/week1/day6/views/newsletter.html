@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe to newsletter</title>
+</head>
+<body>
+    <form action="/newsletter" method="POST">
+        <input type="email" name="email" placeholder="Enter your email address here">
+        <input type="hidden" name="_csrf" value="{{ csrftoken }}">
+        <input type="submit" value="Submit">
+    </form>
+    <ul>
+        {{#errors}}
+            <li><strong>{{ param }}</strong>: {{ msg }}</li>
+        {{/errors}}
+        {{^errors}}{{/errors}}
+    </ul>
+</body>
+</html>
