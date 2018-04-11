@@ -1,0 +1,2 @@
+db.books.createIndex({ keywords: 1 })
+db.books.createIndex({ borrowed: 1 })
