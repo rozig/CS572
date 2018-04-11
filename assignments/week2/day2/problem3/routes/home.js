@@ -66,7 +66,7 @@ router.post('/location/update/:id', (req, res) => {
 		if(err) throw err;
 		const db = client.db('test_db');
 
-		const id = mongo.ObjectID(req.params.id);
+		const id = new mongo.ObjectID(req.params.id);
 		const location = {
 			name: req.body.name,
 			category: req.body.category,
@@ -88,7 +88,7 @@ router.get('/location/delete/:id', (req, res) => {
 		if(err) throw err;
 		const db = client.db('test_db');
 
-		const id = mongo.ObjectID(req.params.id);
+		const id = new mongo.ObjectID(req.params.id);
 
 		db.collection('locationPoints').remove({_id: id}, (err, result) => {
 			if(err) throw err;
