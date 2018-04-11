@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit</title>
+</head>
+<body>
+	<form action="/location/update/{{location._id}}" method="POST">
+		<input type="text" name="name" placeholder="Name" value="{{location.name}}" />
+		<input type="text" name="category" placeholder="Category" value="{{location.category}}" />
+		<input type="text" name="longitude" placeholder="Longitude" value="{{location.long}}" />
+		<input type="text" name="latitude" placeholder="Latitude" value="{{location.lat}}" />
+		<input type="hidden" name="_csrf" value="{{csrftoken}}" />
+		<button type="submit">Update</button>
+	</form>
+</body>
+</html>
