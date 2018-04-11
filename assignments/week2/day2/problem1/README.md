@@ -1,6 +1,6 @@
 # Questions
 
-1. Write a MongoDB query to display all the documents in the collection restaurants.
+1. Write a MongoDB query to display all the documents in the collection restaurants.\
 `db.restaurants.find({})`
 
 2. Write a MongoDB query to display the fields restaurant_id, name, district and cuisine for all the documents in the collection restaurant.
