@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Create new location</title>
+    <meta charset="UTF-8">
+    <title>Create new location</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/style.css" />
 </head>
@@ -16,27 +16,27 @@
         <br>
         <div class="row">
             <div class="col col-12">
-            	<form action="/location/new" method="POST">
-            		<div class="form-group">
-            			<label for="name">Name</label>
-            			<input type="text" class="form-control" id="name" name="name" placeholder="Location name">
-            		</div>
-            		<div class="form-group">
-            			<label for="category">Category</label>
-            			<input type="text" class="form-control" id="category" name="category" aria-describedby="categoryHelp" placeholder="Location category">
-            			<small id="categoryHelp" class="form-text text-muted">Ex: Hospital, Restaurant, Park... etc</small>
-            		</div>
-            		<div class="form-group">
-            			<label for="longitude">Longitude</label>
-            			<input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude value">
-            		</div>
-            		<div class="form-group">
-            			<label for="latitude">Latitude</label>
-            			<input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude value">
-            		</div>
-					<input type="hidden" name="_csrf" value="{{csrftoken}}" />
-            		<button type="submit" class="btn btn-primary">Create</button>
-            	</form>
+                <form action="/location/new" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Location name">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" class="form-control" id="category" name="category" aria-describedby="categoryHelp" placeholder="Location category">
+                        <small id="categoryHelp" class="form-text text-muted">Ex: Hospital, Restaurant, Park... etc</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude value">
+                    </div>
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude value">
+                    </div>
+                    <input type="hidden" name="_csrf" value="{{csrftoken}}" />
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
             </div>
         </div>
     </div>
