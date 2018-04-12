@@ -1,23 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Welcome</title>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-	Welcome<br/>
-	<a href="/location/new">Add new</a>
-	<ul>
-		{{#locations}}
-			<li>
-				{{name}},
-				{{category}},
-				{{long}},
-				{{lat}}
-				<a href="/location/edit/{{_id}}">Edit</a>
-				<a href="/location/delete/{{_id}}">Delete</a>
-			</li>
-		{{/locations}}
-	</ul>
+    <div class="container">
+        <div class="row">
+            <div class="col col-12">
+                <h1>Welcome to locations list</h1>
+                <a class="btn btn-primary" href="/location/new" role="button">Add new</a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col col-12">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Latitude</th>
+                            <th scope="col">Longitude</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#locations}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{category}}</td>
+                            <td>{{lat}}</td>
+                            <td>{{long}}</td>
+                            <td>
+                                <a href="/location/edit/{{_id}}">Edit</a>
+                                 | <a href="/location/delete/{{_id}}">Delete</a>
+                            </td>
+                        </tr>
+                        {{/locations}}
+                        {{^locations}}
+                            <tr>
+                                <td>No entries found!</td>
+                            </tr>
+                        {{/locations}}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

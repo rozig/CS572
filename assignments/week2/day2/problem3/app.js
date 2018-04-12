@@ -1,15 +1,16 @@
-const express = require('express'),
-		cons = require('consolidate'),
-		path = require('path'),
-        compression = require('compression'),
-        logger = require('morgan'),
-        cookieParser = require('cookie-parser'),
-        session = require('express-session'),
-        csrf = require('csurf'),
-        helmet = require('helmet'),
-		app = express(),
+const express = require('express');
+const cons = require('consolidate');
+const path = require('path');
+const compression = require('compression');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const csrf = require('csurf');
+const helmet = require('helmet');
+const app = express();
 
-		home = require('./routes/home');
+const main = require('./routes/main');
+const location = require('./routes/location');
 
 app.set('x-powered-by', false);
 app.set('case sensitive routing', true);
@@ -49,6 +50,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/', home);
+app.use('/', main);
+app.use('/location', location);
 
 module.exports = app;

@@ -1,30 +1,14 @@
-const express = require('express'),
-		mongo = require('mongodb'),
-		MongoClient = mongo.MongoClient,
-		router = express.Router(),
+const express = require('express');
+const mongo = require('mongodb');
+const MongoClient = mongo.MongoClient;
+const router = express.Router();
+const dbUri = 'mongodb://127.0.0.1:27017';
 
-		dbUri = 'mongodb://127.0.0.1:27017';
-
-router.get('/', (req, res) => {
-	MongoClient.connect(dbUri, (err, client) => {
-		if(err) throw err;
-		const db = client.db('test_db');
-
-		db.collection('locationPoints').find({}).toArray((err, docs) => {
-			if(err) throw err;
-
-			res.locals.locations = docs;
-			res.render('index');
-			return client.close();
-		});
-	});
-});
-
-router.get('/location/new', (req, res) => {
+router.get('/new', (req, res) => {
 	res.render('add');
 });
 
-router.get('/location/edit/:id', (req, res) => {
+router.get('/edit/:id', (req, res) => {
 	MongoClient.connect(dbUri, (err, client) => {
 		if(err) throw err;
 		const db = client.db('test_db');
@@ -40,7 +24,7 @@ router.get('/location/edit/:id', (req, res) => {
 	});
 });
 
-router.post('/location', (req, res) => {
+router.post('/new', (req, res) => {
 	MongoClient.connect(dbUri, (err, client) => {
 		if(err) throw err;
 		const db = client.db('test_db');
@@ -55,13 +39,13 @@ router.post('/location', (req, res) => {
 		db.collection('locationPoints').insert(location, (err, docInserted) => {
 			if(err) throw err;
 
-			res.redirect('/');	
+			res.redirect('/');
 			return client.close();
 		});
 	});
 });
 
-router.post('/location/update/:id', (req, res) => {
+router.post('/update/:id', (req, res) => {
 	MongoClient.connect(dbUri, (err, client) => {
 		if(err) throw err;
 		const db = client.db('test_db');
@@ -83,7 +67,7 @@ router.post('/location/update/:id', (req, res) => {
 	});
 });
 
-router.get('/location/delete/:id', (req, res) => {
+router.get('/delete/:id', (req, res) => {
 	MongoClient.connect(dbUri, (err, client) => {
 		if(err) throw err;
 		const db = client.db('test_db');
