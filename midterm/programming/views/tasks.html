@@ -5,8 +5,43 @@
 	<title>Tasks</title>
 </head>
 <body>
-	{{#tasks}}
-		
-	{{/tasks}}
+	<form action="/tasks/" method="post">
+		<input type="text" name="task">
+		<button type="submit">Add</button>
+	</form>
+	<a href="/tasks/completed">Completed Tasks</a>
+	<ul>
+		{{#tasks}}
+			<li><button class="complete-task" data-id="{{_id}}">Mark as done</button> {{task}} (Created at: {{created_date}}) <button class="delete-task" data-id="{{_id}}">Delete</button></li>
+		{{/tasks}}
+	</ul>
+	<script
+	  src="http://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+	<script>
+		$(function() {
+			$('.complete-task').click(function() {
+				const id = $(this).data('id');
+				$.ajax({
+					url: `/tasks/${id}`,
+					type: 'POST',
+					success: (data) => {
+						location.reload();
+					}
+				})
+			});
+			$('.delete-task').click(function() {
+				const id = $(this).data('id');
+				$.ajax({
+					url: `/tasks/${id}`,
+					type: 'DELETE',
+					success: (data) => {
+						location.reload();
+					}
+				})
+			});
+		});
+	</script>
 </body>
 </html>
