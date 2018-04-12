@@ -1,0 +1,24 @@
+1. Multiple choice questions
+10 - Express/Node (EventLoop: ['event emitter', 'buffer', 'files', 'streams', 'bufferVSstreams'], modules: ['commonjs', 'require steps'])
+10 - Mongo (Mostly from Tuesday, Wednesday lectures)
+
+2. Short answer
+Nodejs/Express
+ - CORS,
+ - Event Emitter,
+ - Buffer,
+ - Streams,
+ - Buffer vs Streams,
+ - files,
+ - Promise,
+ - Async/await,
+ - Cluster: scalability, child process, long operations,
+
+MongoDB:
+ - Array operators,
+ - Update with all variations (Update set, update with inserting new field, multiple: true),
+ - Aggregation (match, project, group, sort, sum),
+ - Indexes.
+
+ 3. Programming
+  - CRUD, express, json
