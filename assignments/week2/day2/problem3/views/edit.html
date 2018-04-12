@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Edit</title>
+    <meta charset="UTF-8">
+    <title>Edit location</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-	<form action="/location/update/{{location._id}}" method="POST">
-		<input type="text" name="name" placeholder="Name" value="{{location.name}}" />
-		<input type="text" name="category" placeholder="Category" value="{{location.category}}" />
-		<input type="text" name="longitude" placeholder="Longitude" value="{{location.long}}" />
-		<input type="text" name="latitude" placeholder="Latitude" value="{{location.lat}}" />
-		<input type="hidden" name="_csrf" value="{{csrftoken}}" />
-		<button type="submit">Update</button>
-	</form>
+    <div class="container">
+        <div class="row">
+            <div class="col col-12">
+                <h1>Edit existing location</h1>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col col-12">
+                <form action="/location/update/{{location._id}}" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Location name" value="{{location.name}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <input type="text" class="form-control" id="category" name="category" aria-describedby="categoryHelp" placeholder="Location category" value="{{location.category}}">
+                        <small id="categoryHelp" class="form-text text-muted">Ex: Hospital, Restaurant, Park... etc</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude value" value="{{location.long}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude value" value="{{location.lat}}">
+                    </div>
+                    <input type="hidden" name="_csrf" value="{{csrftoken}}" />
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

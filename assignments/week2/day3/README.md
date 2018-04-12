@@ -46,11 +46,17 @@ db.zips.aggregate([
 
 ```javascript
 db.zips.aggregate([
-	{$group: {_id: "$city"}},
+	{$group: {
+		_id: {state: '$state', city: '$city'},
+		cities: {$sum: 1}}
+	},
+	{$match: {cities: {$gt: 1}}},
+	{$sort: {'_id.state': 1, '_id.city': 1}},
 	{$project: {
 		_id: 0,
-		zip_code: '$_id',
-		pop: 1
+		state: '$_id.state',
+		city: '$_id.city',
+		zipcodes: '$cities'
 	}}
 ])
 ```
@@ -58,5 +64,23 @@ db.zips.aggregate([
 4. Display the least populated city in each state.
 
 ```javascript
-
+db.zips.aggregate([
+	{$group: {
+		_id: {state: '$state', city: '$city'},
+		population: {$sum: '$pop'}}
+	},
+	{$sort: {population: 1, '_id.state': 1, '_id.city': 1}},
+	{$group: {
+		_id: '$_id.state',
+		city: {$first: '$_id.city'},
+		population: {$first: '$population'}
+	}},
+	{$project: {
+		_id: 0,
+		city: 1,
+		state: '$_id',
+		population: 1
+	}},
+	{$sort: {population: -1}}
+])
 ```
