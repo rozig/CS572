@@ -1,6 +1,10 @@
+interface DepositFunction {
+	(value: number): void;
+}
+
 interface BankAccount {
 	money: number;
-	deposit(value: number): void;
+	deposit: DepositFunction;
 }
 
 interface User {
