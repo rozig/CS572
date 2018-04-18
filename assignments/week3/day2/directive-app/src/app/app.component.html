@@ -1,0 +1,3 @@
+<div *ngIf="currentColor">Current color: {{ currentColor }}</div>
+
+<exercise [items]="items" (colorChange)="onColorChange($event)"></exercise>
