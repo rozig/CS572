@@ -12,13 +12,15 @@ import { StudentsComponent } from './students/students.component';
 import { ProfileComponent } from './profile/profile.component';
 
 import { MyGuard } from './guards/my.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     StudentsComponent,
-    ProfileComponent
+    ProfileComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
