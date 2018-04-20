@@ -64,9 +64,9 @@ export class DataDrivenFormComponent implements OnInit {
             this.name.setValue(data[0]['name']);
             this.email.setValue(data[0]['email']);
             let postItem: string = "";
-            data[1].forEach(post => {
-                postItem += `${post.body}\n`
-            });
+            for(let key in data[1]) {
+                postItem += `${data[1][key].body}\n`;
+            }
             this.post.setValue(postItem);
         });
     }

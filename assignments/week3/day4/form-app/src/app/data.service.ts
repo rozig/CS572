@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DataService {
-    private BASE_URL: string = 'http://jsonplaceholder.typicode.com';
+    private BASE_URL: string = 'https://jsonplaceholder.typicode.com';
     constructor(private http: HttpClient) { }
 
     getUserById(id: number) {
